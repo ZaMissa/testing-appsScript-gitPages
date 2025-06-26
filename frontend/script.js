@@ -4,12 +4,11 @@
  */
 
 // Configuration - Update this with your Apps Script Web App URL
-const API_BASE_URL = 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+const API_BASE_URL = 'https://script.google.com/macros/s/AKfycbwc5bLcu5_xm8Lmz5x702_TRH8q_0jwu1v6wDihblq5DaJBESQ6V7JdoLOKncl2Dw3j/exec';
 
 // Global variables
 let records = [];
 let currentEditId = null;
-
 // DOM Elements
 const addForm = document.getElementById('addForm');
 const editForm = document.getElementById('editForm');

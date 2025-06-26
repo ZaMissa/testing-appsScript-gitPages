@@ -12,14 +12,6 @@ const SHEET_NAME = 'Data'; // Sheet name (default: 'Data')
  */
 function doGet(e) {
   try {
-    // Set CORS headers
-    const headers = {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Content-Type': 'application/json'
-    };
-    
     // Get all records
     const records = getAllRecords();
     
@@ -29,8 +21,7 @@ function doGet(e) {
         data: records,
         message: 'Records retrieved successfully'
       }))
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeaders(headers);
+      .setMimeType(ContentService.MimeType.JSON);
       
   } catch (error) {
     return handleError(error);
@@ -42,14 +33,6 @@ function doGet(e) {
  */
 function doPost(e) {
   try {
-    // Set CORS headers
-    const headers = {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Content-Type': 'application/json'
-    };
-    
     // Parse request data
     const data = JSON.parse(e.postData.contents);
     
@@ -67,8 +50,7 @@ function doPost(e) {
         data: newRecord,
         message: 'Record created successfully'
       }))
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeaders(headers);
+      .setMimeType(ContentService.MimeType.JSON);
       
   } catch (error) {
     return handleError(error);
@@ -80,14 +62,6 @@ function doPost(e) {
  */
 function doPut(e) {
   try {
-    // Set CORS headers
-    const headers = {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Content-Type': 'application/json'
-    };
-    
     // Parse request data
     const data = JSON.parse(e.postData.contents);
     const id = e.parameter.id || data.id;
@@ -105,8 +79,7 @@ function doPut(e) {
         data: updatedRecord,
         message: 'Record updated successfully'
       }))
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeaders(headers);
+      .setMimeType(ContentService.MimeType.JSON);
       
   } catch (error) {
     return handleError(error);
@@ -118,14 +91,6 @@ function doPut(e) {
  */
 function doDelete(e) {
   try {
-    // Set CORS headers
-    const headers = {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Content-Type': 'application/json'
-    };
-    
     const id = e.parameter.id;
     
     if (!id) {
@@ -140,8 +105,7 @@ function doDelete(e) {
         success: true,
         message: 'Record deleted successfully'
       }))
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeaders(headers);
+      .setMimeType(ContentService.MimeType.JSON);
       
   } catch (error) {
     return handleError(error);
@@ -152,16 +116,9 @@ function doDelete(e) {
  * Handle OPTIONS requests for CORS preflight
  */
 function doOptions(e) {
-  const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Content-Type': 'application/json'
-  };
-  
   return ContentService
     .createTextOutput('')
-    .setHeaders(headers);
+    .setMimeType(ContentService.MimeType.TEXT);
 }
 
 /**
@@ -292,21 +249,13 @@ function deleteRecord(id) {
  * Handle errors and return appropriate response
  */
 function handleError(error) {
-  const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Content-Type': 'application/json'
-  };
-  
   return ContentService
     .createTextOutput(JSON.stringify({
       success: false,
       error: error.message || 'An error occurred',
       timestamp: new Date().toISOString()
     }))
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeaders(headers);
+    .setMimeType(ContentService.MimeType.JSON);
 }
 
 /**

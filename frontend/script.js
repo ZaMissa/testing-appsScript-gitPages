@@ -4,7 +4,7 @@
  */
 
 // Configuration - Update this with your Apps Script Web App URL
-const API_BASE_URL = 'https://script.google.com/macros/s/AKfycbwc5bLcu5_xm8Lmz5x702_TRH8q_0jwu1v6wDihblq5DaJBESQ6V7JdoLOKncl2Dw3j/exec';
+const API_BASE_URL = 'https://script.google.com/macros/s/AKfycbz4xZHw3pM2CGeOFtETmqo5GnqP6kbvoIXsV9J9ykBxb_OF0NIYWIsWv-A0gbcr5s5t/exec';
 
 // Global variables
 let records = [];
